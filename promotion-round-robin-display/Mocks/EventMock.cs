@@ -9,12 +9,20 @@ namespace promotion_round_robin_display.Mocks
 
         public static List<Event> GetEvents()
         {
-            return new List<Event>
+            
+            var returnData = new List<Event>
             {
                 new Event(7, PromotionMock.GetPromotionsA_C()),
                 new Event(6, PromotionMock.GetPromotionsD_F()),
                 new Event(5, PromotionMock.GetPromotionsG_I())
             };
+            return returnData.OrderByDescending(_ => _.Score).ToList();
+        }
+
+        public static int GetEventsMaxPromotionIndex()
+        {
+            var returnData = GetEvents();
+            return returnData.Max(_ => _.Promotions.Count);
         }
     }
 }
