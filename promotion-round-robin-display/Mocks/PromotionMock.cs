@@ -39,5 +39,29 @@ namespace promotion_round_robin_display.Mocks
             };
             return returnData.OrderBy(_ => _.StartDate).ThenBy(_ => _.Id).ToList();
         }
+
+        public static List<Promotion> GetPromotionsforUnitTestCase34_1()
+        {
+            var returnData = new List<Promotion>
+            {
+                new Promotion("l", DateTime.Parse("2024-09-01")),
+                new Promotion("k", DateTime.Parse("2024-09-05")),
+                new Promotion("n", DateTime.Parse("2024-09-05")),
+                new Promotion("m", DateTime.Parse("2024-09-10"))
+            };
+            return returnData.OrderBy(_ => _.StartDate).ThenBy(_ => _.Id).ToList();
+        }
+
+        public static List<Promotion> GetPromotionsforUnitTestCase34_2()
+        {
+            var returnData = new List<Promotion>
+            {
+                new Promotion("qs", DateTime.Parse("2024-09-01")),
+                new Promotion("o", DateTime.Parse("2024-09-05")),
+                new Promotion("p", DateTime.Parse("2024-09-05")),
+                new Promotion("r", DateTime.Parse("2024-09-10"))
+            };
+            return returnData.OrderBy(_ => _.StartDate).ThenBy(_ => _.Id).ToList();
+        }
     }
 }
