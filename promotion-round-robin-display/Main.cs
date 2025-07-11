@@ -1,29 +1,32 @@
 ﻿using promotion_round_robin_display.Mocks;
 using promotion_round_robin_display.Models;
 
-class Program
+public class Program
 {
     public static EventMock MockData { get; private set; } = default!;
 
-    static void Main()
+    public static void Main(string[] args)
     {
-        Console.WriteLine("Hello welcom");
-        List<Event> data = EventMock.GetEvents();
+        Console.WriteLine("Main");
+        List<Event> mockData = EventMock.GetEvents();
+        RunLogic(mockData, EventMock.GetEventsMaxPromotionIndex(mockData));
+    }
 
-        int promotionIndex = EventMock.GetEventsMaxPromotionIndex();
+    public static void RunLogic(List<Event> data, int promotionIndex)
+    {
         for (int i = 0; i < promotionIndex; i++)
         {
             var promotionIds = data
                 .Where(item => item.Promotions.Count > i)
                 .Select(item => item.Promotions[i].Id);
 
-            Console.WriteLine("Round "+ i);
+            Console.WriteLine("Round " + i);
 
             foreach (var id in promotionIds)
             {
-                Console.Write(id);
+                Console.Write(id + " ");
             }
-            Console.WriteLine("");
+            Console.WriteLine();
         }
     }
 }
